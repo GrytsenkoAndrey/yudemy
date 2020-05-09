@@ -13,17 +13,26 @@ use app\models\Job;
 
 class JobController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function actionIndex($category = 0)
     {
         $query = Job::find();
         $pagination = new Pagination([
             'defaultPageSize' => 20,
             'totalCount' => $query->count(),
         ]);
-        $jobs = $query->orderBy('create_date DESC')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
+        if (!empty($category)) {
+            $jobs = $query->orderBy('create_date DESC')
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->where(['category_id' => $category])
+                ->all();
+        } else {
+            $jobs = $query->orderBy('create_date DESC')
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+        }
+
         return $this->render('index', ['jobs' => $jobs, 'pagination' => $pagination]);
     }
 

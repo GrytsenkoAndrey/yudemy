@@ -118,6 +118,7 @@ a.desc:after {
     border:solid 1px #bbb;
     margin-left:6px;
     margin-bottom:10px;
+    padding-bottom: 6px;
 }
 .col-md-3{
     width:24% !important;

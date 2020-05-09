@@ -113,3 +113,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.myjob{
+    border:solid 1px #bbb;
+    margin-left:6px;
+    margin-bottom:10px;
+}
+.col-md-3{
+    width:24% !important;
+}

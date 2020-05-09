@@ -31,8 +31,13 @@ if ($message !== null) {
 
         <p><strong>City: </strong><?=$item->city;?></p>
         <p><strong>Address: </strong><?=$item->address;?></p>
-        <p><strong>Listed on: </strong><?=$item->create_date;?></p>
-        <a href="/index.php?r=job/detail&id=<?=$item->id;?>" class="btn btn-default pull-right" title="More">Read More..</a>
+
+        <?php
+        $mydate = strtotime($item->create_date);
+        $dtFormat = date("F j,Y g:i a", $mydate);
+        ?>
+        <p><strong>Listed on: </strong><?=$dtFormat;?></p>
+        <a href="/index.php?r=job/details&id=<?=$item->id;?>" class="btn btn-default pull-right" title="More">Read More..</a>
     </div>
     <?php } ?>
 

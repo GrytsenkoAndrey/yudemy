@@ -1,9 +1,16 @@
 <?php
 /* @var $this yii\web\View */
-?>
-<h1>category/index</h1>
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+use yii\helpers\Html;
+use yii\widgets\LinkPager;
+
+?>
+<h1 class="page-header">Category</h1>
+
+<ul class="list-group">
+    <?php foreach ($category as $item) { ?>
+    <li class="list-group-item"><a href="/index.php?r=job&category=<?=$item->id;?>" title="<?=$item->name;?>"><?=$item->name;?></a></li>
+    <?php } ?>
+</ul>
+
+<?=LinkPager::widget(['pagination' => $pagination]);?>

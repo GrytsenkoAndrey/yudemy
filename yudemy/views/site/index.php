@@ -2,16 +2,19 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'My YUdemy';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>My YUdemy :: need a job?</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Browse our open job or find employees.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <p>
+            <a class="btn btn-lg btn-primary" href="index.php?r=yudemy">Start Browsing</a>
+            <a class="btn btn-lg btn-success" href="index.php?r=yudemy/create">Create Listing</a>
+        </p>
     </div>
 
     <div class="body-content">

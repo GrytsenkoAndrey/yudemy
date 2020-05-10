@@ -51,7 +51,7 @@ class User extends ActiveRecord implements IdentityInterface
     */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-    return static::findOne(['access_token' => $token]);
+        return static::findOne(['access_token' => $token]);
     }
 
     /**
@@ -59,7 +59,7 @@ class User extends ActiveRecord implements IdentityInterface
     */
     public function getId()
     {
-    return $this->id;
+        return $this->id;
     }
 
     /**
@@ -67,7 +67,17 @@ class User extends ActiveRecord implements IdentityInterface
     */
     public function getAuthKey()
     {
-    return $this->auth_key;
+        return $this->auth_key;
+    }
+
+    public function validatePassword($password)
+    {
+         return $this->password === md5($password);
+    }
+
+    public static function findByUsername($user_name)
+    {
+        return User::findOne(['user_name' => $user_name]);
     }
 
     /**
@@ -76,6 +86,25 @@ class User extends ActiveRecord implements IdentityInterface
     */
     public function validateAuthKey($authKey)
     {
-    return $this->getAuthKey() === $authKey;
+        return $this->getAuthKey() === $authKey;
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                $this->auth_key = \yii::$app->security->generateRandomString();
+            }
+            if (isset($this->password)) {
+                $this->password = md5($this->password);
+                return parent::beforeSave($insert);
+            }
+        }
+        return true;
+    }
+
+    public function getJob()
+    {
+        return $this->hasMany(Job::class, ['user_id' => 'id']);
     }
 }

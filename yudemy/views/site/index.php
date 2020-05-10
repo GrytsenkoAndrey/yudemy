@@ -9,6 +9,13 @@ $this->title = 'My YUdemy';
     <div class="jumbotron">
         <h1>My YUdemy :: need a job?</h1>
 
+        <?php
+        $message = yii::$app->getSession()->getFlash('message');
+        if ($message !== null) {
+            ?>
+            <div class="alert alert-success"><?=$message;?></div>
+        <?php } ?>
+
         <p class="lead">Browse our open job or find employees.</p>
 
         <p>

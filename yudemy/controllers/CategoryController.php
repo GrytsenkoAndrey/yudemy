@@ -12,6 +12,26 @@ use app\models\Category;
 
 class CategoryController extends \yii\web\Controller
 {
+    /**
+     * Access control
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create'],
+                'rules' => [
+                    [
+                        'actions' => ['create'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         $query = Category::find();

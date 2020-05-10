@@ -82,7 +82,7 @@ class Job extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         # add user id dynamic
-        $this->user_id = \yii::$app->user->identify->id;
+        $this->user_id = yii::$app->user->identity->id;
         return parent::beforeSave($insert);
     }
 }

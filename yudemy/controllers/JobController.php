@@ -13,6 +13,26 @@ use app\models\Job;
 
 class JobController extends \yii\web\Controller
 {
+    /**
+     * Access control
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'edit', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['create', 'edit', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex($category = 0)
     {
         $query = Job::find();

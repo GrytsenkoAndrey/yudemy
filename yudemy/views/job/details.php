@@ -7,6 +7,8 @@
  */
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+
+$this->title = $job->title;
 ?>
 <div class="maincontent">
 <a href="/index.php?r=job" class="btn btn-success">Back to Jobs</a>

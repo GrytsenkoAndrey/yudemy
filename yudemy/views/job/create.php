@@ -8,6 +8,8 @@ use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model app\models\Job */
 /* @var $form ActiveForm */
+
+$this->title = 'Create Job';
 ?>
 <div class="maincontent">
 <div class="job-create">

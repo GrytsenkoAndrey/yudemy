@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 use app\models\Category;
 use yii\helpers\ArrayHelper;
 
+$this->title = $job->title;
 ?>
 
 <div class="maincontent">

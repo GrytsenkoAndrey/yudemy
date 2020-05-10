@@ -3,6 +3,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+
+$this->title = 'Jobs';
 ?>
 <h1 class="page-header">Jobs <a href="/index.php?r=job/create" class="btn btn-primary pull-right" title="Create">Create</a></h1>
 

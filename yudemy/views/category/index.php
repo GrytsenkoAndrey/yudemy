@@ -4,6 +4,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
+$this->title = "Category";
 ?>
 <div class="maincontent">
 <h1 class="page-header">Category <a href="/index.php?r=category/create" class="btn btn-primary pull-right" title="Create">Create</a></h1>

@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
 /* @var $form ActiveForm */
+$this->title = 'Create category';
 ?>
 <div class="maincontent">
 <div class="category-create">

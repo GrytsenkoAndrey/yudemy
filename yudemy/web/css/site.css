@@ -123,3 +123,7 @@ a.desc:after {
 .col-md-3{
     width:24% !important;
 }
+.maincontent{
+    max-width:800px;
+    margin:0 auto;
+}

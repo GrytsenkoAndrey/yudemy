@@ -8,7 +8,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 ?>
-
+<div class="maincontent">
 <a href="/index.php?r=job" class="btn btn-primary">Back to Jobs</a>
 
 <div class="row">
@@ -30,50 +30,40 @@ use yii\widgets\LinkPager;
         ?>
         <ul class="list-group">
             <li class="list-group-item"><strong>Listened date: </strong><?=$dtFormat;?></li>
-        </ul>
     <?php } ?>
 
     <?php
     if (!empty($job->category->name)) {
         ?>
-        <ul class="list-group">
             <li class="list-group-item"><strong>Category: </strong><?=$job->category->name;?></li>
-        </ul>
     <?php } ?>
 
     <?php
     if (!empty($job->type)) {
         ?>
-        <ul class="list-group">
             <li class="list-group-item"><strong>Job Type: </strong><?=ucwords(str_replace('_', ' ', $job->type));?></li>
-        </ul>
     <?php } ?>
 
     <?php
     if (!empty($job->requirements)) {
         ?>
-        <ul class="list-group">
             <li class="list-group-item"><strong>Requirements: </strong><?=$job->requirements;?></li>
-        </ul>
     <?php } ?>
 
     <?php
     if (!empty($job->salary_range)) {
         ?>
-        <ul class="list-group">
             <li class="list-group-item"><strong>Salary: </strong><?=$job->salary_range;?></li>
-        </ul>
     <?php } ?>
 
     <?php
     if (!empty($job->contact_email) && !empty($job->contact_phone)) {
         ?>
-        <ul class="list-group">
             <li class="list-group-item"><strong>Contacts: </strong><?=$job->contact_email;?> | <?=$job->contact_phone;?></li>
-        </ul>
     <?php } ?>
-
+        </ul>
     <div class="well text-center">
         <a href="mailto:<?=$job->contact_email;?>" class="btn btn-success">Contact Employer</a>
     </div>
+</div>
 </div>

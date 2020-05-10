@@ -36,7 +36,7 @@ class CategoryController extends \yii\web\Controller
     {
         $query = Category::find();
         $pagination = new Pagination([
-            'defaultPageSize' => 20,
+            'defaultPageSize' => 3,
             'totalCount' => $query->count(),
         ]);
         $category = $query->orderBy('name')

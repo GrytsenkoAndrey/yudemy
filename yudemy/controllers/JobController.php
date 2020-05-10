@@ -21,10 +21,10 @@ class JobController extends \yii\web\Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'edit', 'delete'],
+                'only' => ['create', 'edit', 'delete', 'details'],
                 'rules' => [
                     [
-                        'actions' => ['create', 'edit', 'delete'],
+                        'actions' => ['create', 'edit', 'delete', 'details'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -37,7 +37,7 @@ class JobController extends \yii\web\Controller
     {
         $query = Job::find();
         $pagination = new Pagination([
-            'defaultPageSize' => 20,
+            'defaultPageSize' => 12,
             'totalCount' => $query->count(),
         ]);
         if (!empty($category)) {
@@ -77,6 +77,11 @@ class JobController extends \yii\web\Controller
     {
         # Delete Job
         $job = Job::findOne($id);
+        # check owner
+        if (yii::$app->user->identity->id != $job->user_id) {
+            return $this->redirect('index.php?r=job');
+        }
+
         $job->delete($id);
         // show message
         yii::$app->getSession()->setFlash('message', 'Job deleted successfully');
@@ -87,6 +92,10 @@ class JobController extends \yii\web\Controller
     {
         $job = Job::findOne($id);
 
+        # check owner
+        if (yii::$app->user->identity->id != $job->user_id) {
+            return $this->redirect('index.php?r=job');
+        }
         if ($job->load(Yii::$app->request->post())) {
             if ($job->validate()) {
                 // save to DB

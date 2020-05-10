@@ -9,7 +9,11 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 ?>
 <div class="maincontent">
-<a href="/index.php?r=job" class="btn btn-primary">Back to Jobs</a>
+<a href="/index.php?r=job" class="btn btn-success">Back to Jobs</a>
+    <span class="pull-right">
+        <a href="/index.php?r=job/edit&id=<?=$job->id;?>" class="btn btn-primary">Edit Job</a>
+        <a onclick="return confirm('are you sure?');" href="/index.php?r=job/delete&id=<?=$job->id;?>" class="btn btn-danger">Delete Job</a>
+    </span>
 
 <div class="row">
     <h2 class="page-header">

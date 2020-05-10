@@ -50,19 +50,34 @@ class JobController extends \yii\web\Controller
             }
         }
 
-        return $this->render('create', [
-            'job' => $job,
-        ]);
+        return $this->render('create', ['job' => $job,]);
     }
 
-    public function actionDelete()
+    public function actionDelete($id)
     {
-        return $this->render('delete');
+        # Delete Job
+        $job = Job::findOne($id);
+        $job->delete($id);
+        // show message
+        yii::$app->getSession()->setFlash('message', 'Job deleted successfully');
+        return $this->redirect('index.php?r=job');
     }
 
-    public function actionEdit()
+    public function actionEdit($id)
     {
-        return $this->render('edit');
+        $job = Job::findOne($id);
+
+        if ($job->load(Yii::$app->request->post())) {
+            if ($job->validate()) {
+                // save to DB
+                $job->save();
+                // show message
+                yii::$app->getSession()->setFlash('message', 'Job edited successfully');
+                return $this->redirect('index.php?r=job');
+            }
+        }
+
+        return $this->render('edit', ['job' => $job,]);
     }
 
     public function actionDetails($id)
